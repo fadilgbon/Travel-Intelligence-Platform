@@ -37,6 +37,15 @@ def validate(df):
     else:
         print("Fraud Check failed")
 
+def engineer_features(df):
+    df["price_per_hour"]= df["price"]/df["duration"]
+    df["route"] = df["source_city"] +" -> " + df["destination_city"]
+    return df
+
+
+
 if __name__ == "__main__":
     df = load()
     validate(df)
+    df = engineer_features(df)
+    print(df[["price", "duration", "price_per_hour", "route"]].head())
