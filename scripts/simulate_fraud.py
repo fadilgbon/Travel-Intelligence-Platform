@@ -5,7 +5,7 @@ import fastparquet
 from pathlib import Path
 from datetime import datetime, timedelta
 
-RAW_PATH = Path(__file__).parent.parent / "data" / "Clean_Dataset.csv"
+RAW_PATH = Path(__file__).parent.parent / "data" / "raw"/ "Clean_Dataset.csv"
 OUTPUT_PATH = Path(__file__).parent.parent / "data" / "processed" / "flights_with_fraud.parquet"
 RNG = np.random.default_rng(42)
 
