@@ -14,10 +14,16 @@ def cheapest_booking_window(df):
     result = result.sort_values(["route","average_price"])
     return result
 
-
+def cheapest_airline_per_route(df):
+    result = df.groupby(["route","airline"])["price"].mean().reset_index()
+    result.columns = ["route","airline","average_price"]
+    result = result.sort_values(["route","average_price"])
+    return result
 
 
 if __name__ == "__main__":
     df = load()
-    result = cheapest_booking_window(df)
+    # result = cheapest_booking_window(df)
+    # print(result.head(20))
+    result = cheapest_airline_per_route(df)
     print(result.head(20))
